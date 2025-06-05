@@ -1,34 +1,30 @@
-import Navbar from "./Components/Navbar/Navbar"
-import Hero from "./Components/Hero/Hero"
-import Programs from "./Components/Programs/Programs"
-import Title from "./Components/Title/Title"
-import About from "./Components/About/About"
-import Campus from "./Components/Campus/Campus"
-import Testimonials from "./Components/Testimonials/Testimonials"
-import Contact from "./Components/Contact/Contact"
-import Footer from "./Components/Footer/Footer"
-import ScrollUp from "./Components/ScrollUp/ScrollUp"
-
+import Navbar from "./Component/Navbar/Navbar"
+import Hero from "./Component/Hero/Hero"
+import Title from "./Component/Title/Title"
+import About from "./Component/About/About"
+import Services from "./Component/Services/Services"
+import { ThemeProvider } from "./context/ThemeContext"
+import Contact from "./Component/Contact/Contact"
 function App() {
-
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <div className="container">
-        <Title subTitle='Our program' title='what we offer'/>
-        <Programs />
-        <About />
-        <Title subTitle='Gallery' title='Campus Photos'/>
-        <Campus />
-        <Title subTitle='Testimonials' title='What Student Says'/>
-        <Testimonials />
-        <Title subTitle='Contact Us' title='Get In Touch'/>
-        <Contact />
-        <Footer />
-        <ScrollUp />
+    <ThemeProvider>
+      <div className="app">
+        <Navbar />
+        <div id="home">
+          <Hero />
+        </div>
+        <div id="about" className="section-wrapper">
+          <Title subTitle="Welcome to" Title="Sherry's Beauty Salon" />
+          <About />
+        </div>
+        <div id="services" className="section-wrapper services-section">
+          <Services />
+        </div>
+        <div id="contact" className="section-wrapper contact-section">
+          <Contact />
+        </div> 
       </div>
-    </>
+    </ThemeProvider>
   )
 }
 
