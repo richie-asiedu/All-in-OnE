@@ -1,0 +1,134 @@
+.sidebar-container {
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    height: 100%;
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+}
+
+.sidebar-container.open {
+    transform: translateX(0);
+}
+
+.hamburger-icon {
+    left: 5px;
+    display: block;
+    background: none;
+    padding: 0;
+    color: #333;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 10px; 
+    left: 10px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; 
+    height: 50px; 
+}
+
+.close-icon {
+    display: none;
+}
+
+.drop {
+    margin-top: 10%;
+}
+
+/* Mobile specific display for icons */
+@media (max-width: 767px) {
+    .sidebar-container.open .hamburger-icon {
+        display: none;
+    }
+
+    .drop {
+        margin-top: 55%;
+    }
+
+    /* No close icon to display */
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+    .sidebar-container {
+        position: fixed;
+        transform: translateX(0);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        height: auto;
+        overflow-y: auto;
+        margin-top: 6.4%;
+    }
+
+    .hamburger-icon, .close-icon {
+        display: none;
+    }
+}
+
+.filter-section {
+    margin-bottom: 30px;
+}
+
+.filter-section h3 {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.filter-section input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #007bff;
+}
+
+.price-filter p {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.price-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #ddd;
+    outline: none;
+    border-radius: 5px;
+}
+
+.price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+
+.price-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+}

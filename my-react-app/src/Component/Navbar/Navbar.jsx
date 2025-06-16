@@ -1,115 +1,101 @@
 import React, { useState } from 'react';
-import { Link } from 'react-scroll';
-import { FaMoon, FaSun, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
-import { useTheme } from '../../context/ThemeContext';
-
-const HairstylistLogo = () => (
-  <svg
-    width="40"
-    height="40"
-    viewBox="0 0 24 24"
-    fill="#FF69B4"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 1c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z"/>
-    <path d="M9 13.5c0 1.38 1.12 2.5 2.5 2.5h1c1.38 0 2.5-1.12 2.5-2.5V12H9v1.5z"/>
-    <path d="M7 10v2h10v-2H7zm5-6C9.24 4 7 6.24 7 9h10c0-2.76-2.24-5-5-5z"/>
-  </svg>
-);
+import { FaHeart, FaBell, FaCog, FaUser, FaSearch, FaFilter } from 'react-icons/fa';
 
 const Navbar = () => {
-  const { darkMode, toggleDarkMode } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  
-  // Toggle mobile menu
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // Handle search
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearchQuery('');
-  };
-
-  const navLinks = [
-    { 
-      id: 'home', 
-      text: 'Home',
-      offset: -80
-    },
-    { 
-      id: 'about', 
-      text: 'About',
-      offset: -80
-    },
-    { 
-      id: 'services', 
-      text: 'Services',
-      offset: -80
-    },
-    { 
-      id: 'contact', 
-      text: 'Contact',
-      offset: -80
-    },
-  ];
+  const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState({
+    priceRange: 'all',
+    carType: 'all',
+    transmission: 'all'
+  });
 
   return (
-    <nav className={`navbar ${darkMode ? 'dark' : 'light'}`}>
-      <div className="nav-brand">
-        <div className="logo">
-          <HairstylistLogo />
-          <h1 className='text-pink-500 font-extrabold'>Sherry's Beauty Salon</h1>
+    <div className="navbar-wrapper">
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <h1>EvansRentals</h1>
         </div>
-        <button className="mobile-menu-btn" onClick={toggleMenu}>
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
-      </div>
 
-      <div className={`nav-elements ${isOpen ? 'active' : ''}`}>
-        <ul className="nav-links">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <Link
-                to={link.id}
-                spy={true}
-                smooth={true}
-                offset={link.offset}
-                duration={500}
-                onClick={() => setIsOpen(false)}
-                className="nav-link"
-                activeClass="active"
-                isDynamic={true}
-                spyThrottle={100}
-              >
-                {link.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <form className="search-form" onSubmit={handleSearch}>
-          <div className="search-container">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button type="submit">
-              <FaSearch />
+        <div className="search-container">
+          <div className="search-bar">
+            <FaSearch className="search-icon" />
+            <input type="text" placeholder="Search for cars..." />
+            <button 
+              className="filter-button"
+              onClick={() => setShowFilters(!showFilters)}
+            >
+              <FaFilter />
             </button>
           </div>
-        </form>
 
-        <button className="theme-toggle" onClick={toggleDarkMode}>
-          {darkMode ? <FaSun /> : <FaMoon />}
-        </button>
-      </div>
-    </nav>
+          {showFilters && (
+            <div className="filters-dropdown">
+              <div className="filter-group">
+                <label>Price Range:</label>
+                <select 
+                  value={filters.priceRange}
+                  onChange={(e) => setFilters({...filters, priceRange: e.target.value})}
+                >
+                  <option value="all">All Prices</option>
+                  <option value="0-50">$0 - $50/day</option>
+                  <option value="51-100">$51 - $100/day</option>
+                  <option value="101+">$101+/day</option>
+                </select>
+              </div>
+
+              <div className="filter-group">
+                <label>Car Type:</label>
+                <select 
+                  value={filters.carType}
+                  onChange={(e) => setFilters({...filters, carType: e.target.value})}
+                >
+                  <option value="all">All Types</option>
+                  <option value="sport">Sport</option>
+                  <option value="suv">SUV</option>
+                  <option value="mvp">MVP</option>
+                  <option value="sedan">Sedan</option>
+                  <option value="coupe">Coupe</option>
+                  <option value="hatchback">Hatchback</option>
+                </select>
+              </div>
+
+              <div className="filter-group">
+                <label>Transmission:</label>
+                <select 
+                  value={filters.transmission}
+                  onChange={(e) => setFilters({...filters, transmission: e.target.value})}
+                >
+                  <option value="all">All</option>
+                  <option value="automatic">Automatic</option>
+                  <option value="manual">Manual</option>
+                </select>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="navbar-icons">
+          <div className="icon-container">
+            <FaHeart className="nav-icon" />
+            <span className="icon-label">Favorites</span>
+          </div>
+          <div className="icon-container">
+            <div className="notification-badge">3</div>
+            <FaBell className="nav-icon" />
+            <span className="icon-label">Notifications</span>
+          </div>
+          <div className="icon-container">
+            <FaCog className="nav-icon" />
+            <span className="icon-label">Settings</span>
+          </div>
+          <div className="icon-container profile">
+            <FaUser className="nav-icon" />
+            <span className="icon-label">Profile</span>
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 

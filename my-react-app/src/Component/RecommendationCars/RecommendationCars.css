@@ -1,0 +1,310 @@
+.recommendation-cars-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 1.5rem;
+    background: transparent;
+    border-radius: 10px;
+    margin-top: -10px;
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .recommendation-cars-container .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #1a202c;
+  }
+  
+  .recommendation-cars-container .cars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .recommendation-cars-container .show-all-cars-btn {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto;
+    background: #3563e9;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .recommendation-cars-container .show-all-cars-btn:hover {
+    background: #2851db;
+  }
+    @media (max-width: 1200px) {
+    .recommendation-cars-container .cars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .recommendation-cars-container {
+      padding: 1rem;
+    }
+  
+    .recommendation-cars-container .show-all-cars-btn {
+      margin: 1.5rem auto;
+    }
+  }
+  
+  .recommendation-cars-container .car-card {
+    background: transparent;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .recommendation-cars-container .car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 9px 15px rgba(0, 0, 0, 0.10);
+  }
+  
+  .recommendation-cars-container .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .recommendation-cars-container .car-title h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1a202c;
+  }
+  
+  .recommendation-cars-container .car-category {
+    color: #718096;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .recommendation-cars-container .favorite-btn {
+    background: none;
+    border: none;
+    color: #cbd5e1;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+  
+  .recommendation-cars-container .favorite-btn.liked {
+    color: #e53e3e;
+  }
+  
+  .recommendation-cars-container .favorite-btn:hover {
+    color: #e53e3e;
+  }
+  
+  .recommendation-cars-container .car-image {
+    width: 100%;
+    height: 90px;
+    margin: 0.7rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .recommendation-cars-container .car-image img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    background-color: transparent;
+  }
+  
+  .recommendation-cars-container .car-specs {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    color: #718096;
+    padding: 0 0.5rem;
+  }
+  
+  .recommendation-cars-container .spec-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+  }
+  
+  .recommendation-cars-container .spec-icon {
+    font-size: 0.8rem;
+    color: #90a3bf;
+  }
+  
+  .recommendation-cars-container .spec-item span {
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    color: #90a3bf;
+  }
+  
+  .recommendation-cars-container .card-footer {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .recommendation-cars-container .price-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  .recommendation-cars-container .original-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #90a3bf;
+  }
+  
+  .recommendation-cars-container .strike-through {
+    text-decoration: line-through;
+  }
+  
+  .recommendation-cars-container .amount {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a202c;
+  }
+  
+  .recommendation-cars-container .period {
+    color: #718096;
+    font-size: 0.9rem;
+  }
+  
+  .recommendation-cars-container .rent-button {
+    background: #3563e9;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  }
+  
+  .recommendation-cars-container .rent-button:hover {
+    background: #2851db;
+  }
+  @media (max-width: 768px) {
+    .recommendation-cars-container {
+      padding: 1rem;
+    }
+  
+    .recommendation-cars-container .cars-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      justify-items: center;
+    }
+  
+    .recommendation-cars-container .car-card {
+      width: 95%;
+      max-width: 400px;
+      padding: 1.5rem;
+    }
+  
+    .recommendation-cars-container .car-image {
+      height: 180px;
+    }
+  
+    .recommendation-cars-container .show-all-cars-btn {
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 0.75rem 1rem;
+      font-size: 14px;
+    }
+  }
+    @media (max-width: 480px) {
+    .recommendation-cars-container {
+      padding: 0.75rem;
+    }
+  
+    .recommendation-cars-container .cars-grid {
+      gap: 1rem;
+    }
+  
+    .recommendation-cars-container .car-card {
+      width: 95%;
+      max-width: 350px;
+      padding: 1.2rem;
+    }
+  
+    .recommendation-cars-container .car-image {
+      height: 150px;
+    }
+  
+    .recommendation-cars-container .car-specs {
+      padding: 0 0.25rem;
+    }
+  
+    .recommendation-cars-container .spec-item {
+      font-size: 0.65rem;
+    }
+  
+    .recommendation-cars-container .spec-item span {
+      font-size: 12px;
+    }
+  
+    .recommendation-cars-container .show-all-cars-btn {
+      padding: 0.5rem 1rem;
+      font-size: 13px;
+      letter-spacing: -0.5px;
+    }
+  
+    .recommendation-cars-container .amount {
+      font-size: 1rem;
+    }
+  
+    .recommendation-cars-container .period {
+      font-size: 0.8rem;
+    }
+  
+    .recommendation-cars-container .rent-button {
+      padding: 0.4rem 0.4rem;
+      font-size: 0.8rem;
+    }
+  }    @media (min-width: 1201px) {
+    .recommendation-cars-container .cars-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .recommendation-cars-container .car-card {
+      width: 100%;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+    .recommendation-cars-container .car-image {
+      height: 90px;
+      margin: 0.7rem 0;
+    }
+    .recommendation-cars-container .card-header {
+      margin-bottom: 0.7rem;
+    }
+    .recommendation-cars-container .card-footer {
+      margin-top: 0.8rem;
+      padding-top: 0.8rem;
+    }
+  }

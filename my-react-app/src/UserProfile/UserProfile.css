@@ -1,0 +1,747 @@
+.user-profile-container {
+  display: flex;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  overflow-x: hidden;/* Prevent horizontal scroll on smaller devices */
+}
+
+body.dark-mode .user-profile-container {
+  background-color: #1a202c;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 80px; /* Move sidebar down below navbar on larger screens */
+  height: 100vh;
+  overflow-y: auto;
+  left: 0; /* Always visible on larger screens */
+  transition: left 0.5s ease;
+  box-shadow: none;
+  z-index: 799;
+  padding-top: 1rem;
+}
+body.dark-mode .sidebar{
+    background-color: #1a202c;
+}
+
+.main-menu, .preferences, .logout {
+  margin-bottom: 2rem;
+}
+
+.main-menu h2, .preferences h2 {
+  color: #a0a0a0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar li img {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+}
+
+.sidebar li:hover {
+  background-color: #e0e7ff;
+  color: #3563e9;
+}
+
+.sidebar li.active {
+  background-color: #3563e9;
+  color: #ffffff;
+}
+
+.sidebar li.active img {
+  filter: brightness(0) invert(1);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 200px; /* Increased width to accommodate icons */
+  height: 30px; /* Increased height */
+  margin-left: auto;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px; /* Adjust border-radius for new height */
+  background-image: none;
+  background-size: initial;
+  background-position: initial;
+  background-repeat: no-repeat;
+}
+
+.toggle-switch input:checked + label {
+  background-color: #3563e9;
+}
+
+.toggle-switch label:before {
+  position: absolute;
+  content: "";
+  height: 26px; /* Increased size for thumb */
+  width: 26px; /* Increased size for thumb */
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + label:before {
+  transform: translateX(40px); /* Adjust translation for new width */
+}
+
+.main-content-wrapper {
+  flex-grow: 1;
+  margin-left: 250px; /* Adjusted to be closer to sidebar */
+  padding: 2rem;
+  margin-top: 64px; /* Align main content with the new sidebar top */
+  display: flex; /* Ensures content inside is flex-enabled */
+  justify-content: center; /* Centers content horizontally within the wrapper */
+}
+
+.main-content {
+  display: flex;
+  gap: 2rem;
+  max-width: 1400px; /* Increased max-width for larger screens */
+  margin: 0 auto; /* Center the content horizontally */
+}
+
+.details-rental-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  flex: 2;
+}
+
+.details-rental-card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1a202c;
+}
+
+.map-placeholder img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.car-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.car-image img {
+  width: 210px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #3563e9;
+  margin-right: 1rem;
+}
+
+.car-details h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+  color: #1a202c;
+}
+
+.car-details p {
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.car-id {
+  margin-left: auto;
+  font-weight: bold;
+  color: #a0a0a0;
+}
+
+.rental-points {
+  margin-bottom: 1.5rem;
+}
+
+.pickup-dropoff {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.point {
+  display: flex;
+  align-items: flex-start;
+}
+
+.point-details {
+  flex-grow: 1;
+}
+
+.point-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #1a202c;
+}
+
+.point-selection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.point-selection p {
+  flex-grow: 1;
+  margin: 0;
+  color: #4a5568;
+}
+
+.point-selection select {
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 1rem;
+  color: #1a202c;
+  cursor: pointer;
+  appearance: none;
+  padding-right: 1.5rem; /* For custom arrow */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%20197.3l-130.3-130.3c-4.5-4.5-11.7-4.5-16.2%200L5.4%20197.3c-4.5%204.5-4.5%2011.7%200%2016.2l16.2%2016.2c4.5%204.5%2011.7%204.5%2016.2%200l94.8-94.8%2094.8%2094.8c4.5%204.5%2011.7%204.5%2016.2%200l16.2-16.2c4.5-4.5%204.5-11.7%200-16.2z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 0.6em auto;
+}
+
+.total-rental-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.price-label h3 {
+  font-size: 1rem;
+  color: #a0a0a0;
+  margin: 0;
+  font-weight: normal;
+}
+
+.price-label p {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.price-value h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a202c;
+  margin: 0;
+}
+
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.top-car-rental-card, .recent-transaction-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.top-car-rental-card h2, .recent-transaction-card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1a202c;
+}
+
+.donut-chart-container {
+  position: relative;
+  width: 250px; /* Increased width */
+  height: 250px; /* Increased height */
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-chart-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.chart-info {
+  position: absolute;
+  text-align: center;
+}
+
+.chart-info .total-rental-count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a202c;
+  margin: 0;
+}
+
+.chart-info .rental-car-label {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.car-categories ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.car-categories li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+.car-categories li span:first-child {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
+.color-dot.sport-car {
+  background-color: #3563e9;
+}
+.color-dot.suv {
+  background-color: #61b0f5;
+}
+.color-dot.coupe {
+  background-color: #92c4f7;
+}
+.color-dot.hatchback {
+  background-color: #b1d5f9;
+}
+.color-dot.mpv {
+  background-color: #d1e6fa;
+}
+
+.recent-transaction-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.recent-transaction-card .card-header a {
+  color: #3563e9;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-details {
+  display: flex;
+  align-items: center;
+}
+
+.item-details img {
+  width: 110px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 4px;
+  margin-right: 0.75rem;
+}
+
+.item-text h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  color: #1a202c;
+}
+
+.item-text p {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.item-price-date {
+  text-align: right;
+}
+
+.item-price-date .date {
+  font-size: 0.8rem;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.item-price-date .price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1a202c;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .main-content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-profile-container {
+    flex-direction: column;
+    margin-top: 37%;
+  }
+
+  .sidebar {
+    position: fixed;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: 0; /* Ensure it starts from the top on small screens */
+    padding-top: 5rem; /* Add padding to account for navbar area on small screens */
+    width: 100%; /* Full width on smaller screens */
+    left: -100%;
+    z-index: 2000; /* Hidden by default on smaller screens */
+  }
+
+  .sidebar.open {
+    left: 0; /* Show sidebar when open */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .hamburger-menu {
+    display: flex; /* Show hamburger on smaller screens */
+    z-index: 2050; /* Higher than sidebar, so it's always clickable */
+  }
+  body.dark-mode .hamburger-menu{
+    background-color: #3563e9;
+  }
+
+  .main-menu, .preferences, .logout {
+    margin-bottom: 1rem;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .sidebar li {
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0;
+    flex-direction: column;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  .sidebar li img {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  .main-content-wrapper {
+    margin-left: 0; /* Remove fixed margin when sidebar is hidden */
+    width: 100%; /* Take full width on smaller screens */
+    margin-top: 0; /* Remove top margin on smaller screens */
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 70px; /* Increased width to accommodate icons */
+    height: 30px; /* Increased height */
+    margin-left: auto;
+  }
+
+  .details-rental-card, .top-car-rental-card, .recent-transaction-card {
+    padding: 1rem;
+  }
+
+  .details-rental-card h2, .top-car-rental-card h2, .recent-transaction-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .car-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .car-image img {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .car-id {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  .point-selection {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .point-selection select {
+    width: 100%;
+  }
+
+  .total-rental-price {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-value h3 {
+    margin-top: 0.5rem;
+  }
+
+  .donut-chart-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .chart-info .total-rental-count {
+    font-size: 1.5rem;
+  }
+
+  .chart-info .total-rental-count {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1a202c;
+    margin: 0;
+  }
+  
+  .chart-info .rental-car-label {
+    font-size: 0.5rem;
+    color: #a0a0a0;
+    margin: 0;
+  }
+
+  .item-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-details img {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  .sidebar-overlay {
+    display: block; /* Show overlay when on smaller screens */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sidebar li {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none; /* Hidden by default on larger screens */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1001;
+}
+
+.hamburger-menu .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.open .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.sidebar-overlay {
+  display: none; /* Hidden by default */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+
+body.dark-mode .sidebar {
+  background-color: #2d3748;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .sidebar li {
+  color: #e2e8f0;
+}
+
+body.dark-mode .sidebar li:hover {
+  background-color: #4a5568;
+  color: #e2e8f0;
+}
+
+body.dark-mode .sidebar li.active {
+  background-color: #3563e9;
+  color: #ffffff;
+}
+
+body.dark-mode .main-menu h2,
+body.dark-mode .preferences h2 {
+  color: #a0aec0;
+}
+
+body.dark-mode .hamburger-menu .bar {
+  background-color: #e2e8f0;
+}
+
+body.dark-mode .details-rental-card,
+body.dark-mode .top-car-rental-card,
+body.dark-mode .recent-transaction-card {
+  background-color: #2d3748;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .details-rental-card h2,
+body.dark-mode .top-car-rental-card h2,
+body.dark-mode .recent-transaction-card h2 {
+  color: #e2e8f0;
+}
+
+body.dark-mode .car-details h3,
+body.dark-mode .price-value h3,
+body.dark-mode .chart-info .total-rental-count,
+body.dark-mode .item-text h3,
+body.dark-mode .item-price-date .price {
+  color: #e2e8f0;
+}
+
+body.dark-mode .car-details p,
+body.dark-mode .car-id,
+body.dark-mode .point-label,
+body.dark-mode .point-selection p,
+body.dark-mode .total-rental-price .price-label h3,
+body.dark-mode .total-rental-price .price-label p,
+body.dark-mode .chart-info .rental-car-label,
+body.dark-mode .car-categories li,
+body.dark-mode .item-text p,
+body.dark-mode .item-price-date .date {
+  color: #a0aec0;
+}
+
+body.dark-mode .point-selection input {
+  color: #e2e8f0;
+  background-color: #2d3748;
+  border-color: #4a5568;
+}
+
+body.dark-mode .toggle-switch label {
+  background-color: #4a5568;
+}
+
+body.dark-mode .toggle-switch input:checked + label {
+  background-color: #3563e9;
+}
+
+body.dark-mode .recent-transaction-card .card-header a {
+  color: #63b3ed;
+}
+
+.donut-chart-center-circle {
+  fill: #ffffff; /* White background for the center */
+}
+
+body.dark-mode .donut-chart-center-circle {
+  fill: #2d3748; /* Dark mode background for the center */
+}

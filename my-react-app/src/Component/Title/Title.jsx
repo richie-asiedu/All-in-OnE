@@ -1,21 +1,11 @@
 import React from 'react'
 import './Title.css'
-import { useTheme } from '../../context/ThemeContext'
 
-const Title = ({ subTitle, Title }) => {
-  const { darkMode } = useTheme();
-  
+const Title = ({Title}) => {
   return (
-    <div className={`title-section ${darkMode ? 'dark' : ''}`}>
-      <div className="title-content">
-        <span className="subtitle">{subTitle}</span>
-        <h2 className="main-title">{Title}</h2>
-        <div className="title-decoration">
-          <span className="line"></span>
-          <span className="dot"></span>
-          <span className="line"></span>
-        </div>
-      </div>
+    <div className='title-container'>
+      <h4 className='title'>{Title}</h4>
+      <a href="#" className='view-all'>View All</a>
     </div>
   )
 }

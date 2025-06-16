@@ -1,0 +1,146 @@
+.reviews-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  max-width: 930px;
+  margin-left: 10%;
+}
+
+.reviews-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.reviews-header h2 {
+  font-size: 24px;
+  color: #333;
+  margin-right: 15px;
+}
+
+.reviews-count {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.review-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.reviewer-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.review-content {
+  flex: 1;
+}
+
+.reviewer-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reviewer-info h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.reviewer-info p {
+  font-size: 14px;
+  color: #777;
+}
+
+.review-date {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.review-stars {
+  color: #ffc107;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.review-stars .empty {
+  color: #e0e0e0;
+}
+
+.review-text {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.show-all-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.show-all-button:hover {
+  background-color: #f0f8ff;
+}
+
+.show-all-button svg {
+  margin-left: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reviews-container {
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    margin: 20px auto;
+  }
+
+  .reviews-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reviews-header h2 {
+    margin-bottom: 10px;
+  }
+
+  .review-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reviewer-avatar {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .reviewer-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-date {
+    margin-top: 5px;
+  }
+}
